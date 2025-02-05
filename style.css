@@ -10,9 +10,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     overflow: hidden;
     background: radial-gradient(circle, #ff758c, #ff7eb3);
+    text-align: center;
 }
 
 /* Контейнер с летающими сердечками */
@@ -21,6 +23,8 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    top: 0;
+    left: 0;
 }
 
 .heart {
@@ -91,6 +95,63 @@ body {
     margin-bottom: 20px;
 }
 
+/* Слайдер */
+.slider-container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    transition: transform 0.5s;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+/* Кнопки навигации */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.6);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4d6d;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.prev:hover, .next:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
 /* Кнопка */
 .glowing-button {
     padding: 15px 40px;
@@ -102,6 +163,7 @@ body {
     box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
     cursor: pointer;
     transition: 0.3s;
+    margin-top: 20px;
 }
 
 .glowing-button:hover {
@@ -122,5 +184,10 @@ body {
     .glowing-button {
         font-size: 1rem;
         padding: 12px 30px;
+    }
+
+    .slider-container {
+        width: 250px;
+        height: 150px;
     }
 }

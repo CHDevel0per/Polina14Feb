@@ -4,30 +4,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test World</title>
+    <title>Happy Valentine's Day ❤️</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-        function redirectToAnotherPage() {
-            window.location.href = "love.html";
-        }
-
-        function hideButton() {
-            const btnFalse = document.querySelector('.btn-false');
-            btnFalse.style.display = 'none';
-        }
-    </script>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Добро пожаловать в <span class="highlight">Test World</span></h1>
-        <p class="description">Этот мир — особенный. Здесь сбываются мечты...</p>
-        <div class="buttons">
-            <button class="btn btn-true" onclick="redirectToAnotherPage()">Продолжить</button>
-            <button class="btn btn-false" onclick="hideButton()">Нет</button>
+    <!-- Контейнер для летающих сердечек -->
+    <div class="hearts-container"></div>
+
+    <!-- Основной контент страницы -->
+    <div class="content">
+        <h1 class="glowing-text">Любовь в воздухе! 💖</h1>
+
+        <!-- Слайдер -->
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide">
+                    <img src="images/photo1.jpg" alt="Фото 1">
+                </div>
+                <div class="slide">
+                    <img src="images/photo2.jpg" alt="Фото 2">
+                </div>
+                <div class="slide">
+                    <img src="images/photo3.jpg" alt="Фото 3">
+                </div>
+            </div>
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <button class="next" onclick="nextSlide()">&#10095;</button>
         </div>
+
+        <p class="subtitle">Сегодня 14 февраля, а значит, время для волшебства!</p>
+
+        <!-- Кнопка для перехода -->
+        <button class="glowing-button" onclick="startLoveMagic()">Продолжить</button>
     </div>
+
+    <script>
+        // Функция для перехода на другую страницу
+        function startLoveMagic() {
+            window.location.href = "index3.html";
+        }
+
+        // Функция для создания летающих сердечек
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.querySelector(".hearts-container").appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 300);
+
+        // Логика работы слайдера
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slider = document.querySelector('.slider');
+
+        function showSlide(index) {
+            if (index >= slides.length) currentIndex = 0;
+            else if (index < 0) currentIndex = slides.length - 1;
+            else currentIndex = index;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+    </script>
 </body>
 
 </html>
-    
