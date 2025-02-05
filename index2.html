@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test World</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function redirectToAnotherPage() {
+            window.location.href = "love.html";
+        }
+
+        function hideButton() {
+            const btnFalse = document.querySelector('.btn-false');
+            btnFalse.style.display = 'none';
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Добро пожаловать в <span class="highlight">Test World</span></h1>
+        <p class="description">Этот мир — особенный. Здесь сбываются мечты...</p>
+        <div class="buttons">
+            <button class="btn btn-true" onclick="redirectToAnotherPage()">Продолжить</button>
+            <button class="btn btn-false" onclick="hideButton()">Нет</button>
+        </div>
+    </div>
+</body>
+
+</html>
+    

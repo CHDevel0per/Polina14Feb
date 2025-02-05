@@ -1,0 +1,126 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle, #ff758c, #ff7eb3);
+}
+
+/* Контейнер с летающими сердечками */
+.hearts-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(-45deg);
+    animation: floatUp linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: 10px;
+    top: 0;
+}
+
+/* Анимация сердечек */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(-45deg);
+        opacity: 0;
+    }
+}
+
+/* Центрированное содержимое */
+.content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+/* Светящийся заголовок */
+.glowing-text {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 10px #ff96a8, 0 0 20px #ff758c; }
+    100% { text-shadow: 0 0 20px #ff758c, 0 0 30px #ff96a8; }
+}
+
+/* Подзаголовок */
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* Кнопка */
+.glowing-button {
+    padding: 15px 40px;
+    border: none;
+    font-size: 1.2rem;
+    color: white;
+    background: linear-gradient(45deg, #ff4d6d, #ff758c);
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.glowing-button:hover {
+    box-shadow: 0 0 20px rgba(255, 71, 87, 0.8);
+    transform: scale(1.1);
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .glowing-text {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .glowing-button {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+}
