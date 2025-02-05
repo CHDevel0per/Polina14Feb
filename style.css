@@ -1,5 +1,5 @@
-/* Общие стили */
-* {
+ /* Общие стили */
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -169,6 +169,22 @@ body {
 .glowing-button:hover {
     box-shadow: 0 0 20px rgba(255, 71, 87, 0.8);
     transform: scale(1.1);
+}
+
+/* Стили для скрытой кнопки */
+.hidden-button {
+    background-color: #ff4081;
+    color: white;
+    font-size: 18px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hidden-button:hover {
+    background-color: #e91e63;
 }
 
 /* Адаптивность */

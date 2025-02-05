@@ -19,15 +19,9 @@
         <!-- Слайдер -->
         <div class="slider-container">
             <div class="slider">
-                <div class="slide">
-                    <img src="images/photo1.jpg" alt="Фото 1">
-                </div>
-                <div class="slide">
-                    <img src="images/photo2.jpg" alt="Фото 2">
-                </div>
-                <div class="slide">
-                    <img src="images/photo3.jpg" alt="Фото 3">
-                </div>
+                <div class="slide"><img src="images/photo1.jpg" alt="Фото 1"></div>
+                <div class="slide"><img src="images/photo2.jpg" alt="Фото 2"></div>
+                <div class="slide"><img src="images/photo3.jpg" alt="Фото 3"></div>
             </div>
             <button class="prev" onclick="prevSlide()">&#10094;</button>
             <button class="next" onclick="nextSlide()">&#10095;</button>
@@ -35,14 +29,63 @@
 
         <p class="subtitle">Сегодня 14 февраля, а значит, время для волшебства!</p>
 
-        <!-- Кнопка для перехода -->
-        <button class="glowing-button" onclick="startLoveMagic()">Продолжить</button>
+        <!-- Основная кнопка -->
+        <button id="mainButton" class="glowing-button" onclick="startChallenge()">Продолжить</button>
     </div>
 
     <script>
-        // Функция для перехода на другую страницу
-        function startLoveMagic() {
-            window.location.href = "index3.html";
+        let clickCount = 0;
+
+        function startChallenge() {
+            // Скрываем главную кнопку
+            document.getElementById("mainButton").style.display = "none";
+            spawnHiddenButton();
+        }
+
+        function spawnHiddenButton() {
+            if (clickCount >= 3) {
+                window.location.href = "index3.html"; // Переход на следующую страницу
+                return;
+            }
+
+            const content = document.querySelector(".content"); // Контейнер с текстом и изображениями
+            const button = document.createElement("button");
+            button.classList.add("hidden-button");
+            button.textContent = "Продолжить";
+            button.style.position = "absolute";
+            button.style.width = "150px"; // Устанавливаем ширину кнопки
+            button.style.height = "50px"; // Устанавливаем высоту кнопки
+            button.style.zIndex = "999"; // Убедимся, что кнопка будет сверху
+
+            let left, top;
+            let isOverlapping;
+
+            do {
+                left = Math.random() * 80 + "vw"; // Случайная позиция по оси X
+                top = Math.random() * 80 + "vh";  // Случайная позиция по оси Y
+
+                // Проверяем, пересекается ли кнопка с контентом
+                const contentRect = content.getBoundingClientRect(); // Получаем размеры и позицию контента
+                const buttonRect = button.getBoundingClientRect(); // Получаем размеры кнопки
+
+                isOverlapping = 
+                    buttonRect.left < contentRect.right && 
+                    buttonRect.right > contentRect.left &&
+                    buttonRect.top < contentRect.bottom && 
+                    buttonRect.bottom > contentRect.top;
+                
+            } while (isOverlapping); // Если кнопка пересекается с контентом, пробуем снова
+
+            button.style.left = left;
+            button.style.top = top;
+
+            button.onclick = () => {
+                button.remove();
+                clickCount++;
+                spawnHiddenButton();
+            };
+
+            document.body.appendChild(button);
         }
 
         // Функция для создания летающих сердечек
@@ -58,7 +101,7 @@
         }
         setInterval(createHeart, 300);
 
-        // Логика работы слайдера
+        // Логика слайдера
         let currentIndex = 0;
         const slides = document.querySelectorAll('.slide');
         const slider = document.querySelector('.slider');
