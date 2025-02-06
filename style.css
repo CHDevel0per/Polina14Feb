@@ -150,3 +150,9 @@ body {
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
+
+.photo-gallery img {
+    width: 300px;     /* Устанавливает фиксированную ширину изображения */
+    height: auto;    /* Устанавливает фиксированную высоту изображения */
+    object-fit: cover; /* Изображение будет обрезано, чтобы сохранить пропорции */
+}
