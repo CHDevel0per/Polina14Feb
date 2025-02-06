@@ -17,21 +17,23 @@
 
         <div class="button-container">
             <a href="index2.html" class="back-button">Назад</a>
+            <a href="page4.html" class="love-button">Видео 🎥</a>
+            <a href="page5.html" class="love-button">Фото 📸</a>
         </div>
     </div>
+
     <script>
         // Создание случайных сердечек
         const heartsContainer = document.querySelector('.hearts-container');
         for (let i = 0; i < 30; i++) {
             const heart = document.createElement('div');
             heart.classList.add('heart');
-            heart.style.left = `${Math.random() * 100}vw`;  // случайная позиция по горизонтали
-            heart.style.bottom = `-${Math.random() * 20 + 5}vh`; // случайная позиция по вертикали (чтобы они появлялись снизу)
-            heart.style.animationDuration = `${Math.random() * 4 + 3}s`; // случайная длительность анимации
-            heart.style.animationDelay = `${Math.random() * 2}s`; // случайная задержка
+            heart.style.left = `${Math.random() * 100}vw`;  
+            heart.style.bottom = `-${Math.random() * 20 + 5}vh`; 
+            heart.style.animationDuration = `${Math.random() * 4 + 3}s`; 
+            heart.style.animationDelay = `${Math.random() * 2}s`; 
             heartsContainer.appendChild(heart);
         }
-        
     </script>
 </body>
 
