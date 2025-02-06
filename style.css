@@ -1,5 +1,5 @@
- /* Общие стили */
- * {
+/* Общие стили */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -25,13 +25,13 @@ body {
     overflow: hidden;
     top: 0;
     left: 0;
+    pointer-events: none;
 }
 
 .heart {
     position: absolute;
-    bottom: -50px;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background: red;
     transform: rotate(-45deg);
     animation: floatUp linear infinite;
@@ -41,30 +41,39 @@ body {
 .heart::after {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background: red;
     border-radius: 50%;
 }
 
 .heart::before {
-    top: -10px;
+    top: -15px;
     left: 0;
 }
 
 .heart::after {
-    left: 10px;
+    left: 15px;
     top: 0;
 }
 
-/* Анимация сердечек */
+/* Анимация подъема сердечек */
 @keyframes floatUp {
     0% {
-        transform: translateY(0) rotate(-45deg);
+        transform: translateX(0) translateY(0) rotate(-45deg);
         opacity: 1;
     }
+    25% {
+        transform: translateX(-10px) translateY(-30vh) rotate(-45deg);
+    }
+    50% {
+        transform: translateX(10px) translateY(-60vh) rotate(-45deg);
+    }
+    75% {
+        transform: translateX(-5px) translateY(-80vh) rotate(-45deg);
+    }
     100% {
-        transform: translateY(-100vh) rotate(-45deg);
+        transform: translateX(0) translateY(-100vh) rotate(-45deg);
         opacity: 0;
     }
 }
@@ -95,115 +104,36 @@ body {
     margin-bottom: 20px;
 }
 
-/* Слайдер */
-.slider-container {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    margin: 20px auto;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.slider {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s ease-in-out;
-}
-
-.slide {
-    min-width: 100%;
-    transition: transform 0.5s;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-}
-
-/* Кнопки навигации */
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.6);
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff4d6d;
-    border-radius: 50%;
-    transition: 0.3s;
-}
-
-.prev:hover, .next:hover {
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
-/* Кнопка */
-.glowing-button {
+/* Кнопки */
+.love-button, .back-button {
+    display: inline-block;
     padding: 15px 40px;
-    border: none;
     font-size: 1.2rem;
     color: white;
-    background: linear-gradient(45deg, #ff4d6d, #ff758c);
+    border: none;
     border-radius: 30px;
-    box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+    box-shadow: 0 0 15px rgba(255, 22, 93, 0.8);
     cursor: pointer;
     transition: 0.3s;
-    margin-top: 20px;
+    width: 250px;
+    text-decoration: none;
 }
 
-.glowing-button:hover {
-    box-shadow: 0 0 20px rgba(255, 71, 87, 0.8);
+.love-button {
+    background: linear-gradient(45deg, #ff165d, #ff4d6d, #ff758c);
+}
+
+.love-button:hover {
+    box-shadow: 0 0 25px rgba(255, 22, 93, 1);
     transform: scale(1.1);
 }
 
-/* Стили для скрытой кнопки */
-.hidden-button {
-    background-color: #ff4081;
-    color: white;
-    font-size: 18px;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s;
+.back-button {
+    background: linear-gradient(45deg, #555, #777);
+    margin-top: 30px;
 }
 
-.hidden-button:hover {
-    background-color: #e91e63;
-}
-
-/* Адаптивность */
-@media (max-width: 600px) {
-    .glowing-text {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 1.2rem;
-    }
-
-    .glowing-button {
-        font-size: 1rem;
-        padding: 12px 30px;
-    }
-
-    .slider-container {
-        width: 250px;
-        height: 150px;
-    }
+.back-button:hover {
+    box-shadow: 0 0 20px rgba(100, 100, 100, 0.8);
+    transform: scale(1.1);
 }

@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Полиша, с Днем Святого Валентина! ❤️</title>
+    <title>Полиша, ты — мое счастье! ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div class="hearts-container"></div>
 
     <div class="content">
-        <h1 class="glowing-text">Сегодня <span class="highlight">14 февраля</span>! 💖</h1>
-        <p class="subtitle">Полиша, ты согреваешь мое сердце больше, чем этот день... ❤️</p>
+        <h1 class="glowing-text">Полиша, ты — мое счастье! 💖</h1>
+        <p class="subtitle">Я хочу сказать тебе кое-что важное...</p>
 
-        <button class="glowing-button" onclick="startLoveMagic()">Продолжить</button>
+        <div class="button-container">
+            <a href="index2.html" class="love-button">Продолжить</a>
+        </div>
     </div>
 
     <script>
-        function startLoveMagic() {
-            window.location.href = "index2.html";
+        // Создание случайных сердечек
+        const heartsContainer = document.querySelector('.hearts-container');
+        for (let i = 0; i < 30; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = `${Math.random() * 100}vw`;  // случайная позиция по горизонтали
+            heart.style.bottom = `-${Math.random() * 20 + 5}vh`; // случайная позиция по вертикали (чтобы они появлялись снизу)
+            heart.style.animationDuration = `${Math.random() * 4 + 3}s`; // случайная длительность анимации
+            heart.style.animationDelay = `${Math.random() * 2}s`; // случайная задержка
+            heartsContainer.appendChild(heart);
         }
-
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
-            document.querySelector(".hearts-container").appendChild(heart);
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
-        }
-        setInterval(createHeart, 300);
     </script>
 </body>
-
 </html>
