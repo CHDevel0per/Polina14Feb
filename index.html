@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Контейнер для сердечек -->
     <div class="hearts-container"></div>
 
+    <!-- Контент -->
     <div class="content">
         <h1 class="glowing-text">Полиша, ты — мое счастье! 💖</h1>
         <p class="subtitle">Я хочу сказать тебе кое-что важное...</p>
@@ -18,18 +20,35 @@
         </div>
     </div>
 
+    <!-- Всплывающее облачко -->
+    <div class="love-cloud">Я тебя люблю 💕</div>
+
     <script>
-        // Создание случайных сердечек
+        // Генерация случайных сердечек
         const heartsContainer = document.querySelector('.hearts-container');
         for (let i = 0; i < 30; i++) {
             const heart = document.createElement('div');
             heart.classList.add('heart');
-            heart.style.left = `${Math.random() * 100}vw`;  // случайная позиция по горизонтали
-            heart.style.bottom = `-${Math.random() * 20 + 5}vh`; // случайная позиция по вертикали (чтобы они появлялись снизу)
-            heart.style.animationDuration = `${Math.random() * 4 + 3}s`; // случайная длительность анимации
-            heart.style.animationDelay = `${Math.random() * 2}s`; // случайная задержка
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.bottom = `-${Math.random() * 20 + 5}vh`;
+            heart.style.animationDuration = `${Math.random() * 4 + 3}s`;
+            heart.style.animationDelay = `${Math.random() * 2}s`;
             heartsContainer.appendChild(heart);
         }
+
+        // Функция для появления облачка
+        function showLoveCloud() {
+            const cloud = document.querySelector('.love-cloud');
+            cloud.style.left = `${Math.random() * 70 + 15}vw`; // Рандомное положение по горизонтали
+            cloud.style.top = `${Math.random() * 60 + 20}vh`; // Рандомное положение по вертикали
+            cloud.style.opacity = "1";
+            setTimeout(() => {
+                cloud.style.opacity = "0";
+            }, 3000); // Исчезает через 3 секунды
+        }
+
+        // Запуск облачка каждые 5 секунд
+        setInterval(showLoveCloud, 5000);
     </script>
 </body>
 </html>

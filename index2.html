@@ -25,6 +25,9 @@
         </div>
     </div>
 
+     <!-- Всплывающее облачко -->
+    <div class="love-cloud">Я тебя люблю 💕</div>
+
     <script>
         // Создание случайных сердечек
         const heartsContainer = document.querySelector('.hearts-container');
@@ -37,6 +40,20 @@
             heart.style.animationDelay = `${Math.random() * 2}s`; // случайная задержка
             heartsContainer.appendChild(heart);
         }
+
+            // Функция для появления облачка
+            function showLoveCloud() {
+            const cloud = document.querySelector('.love-cloud');
+            cloud.style.left = `${Math.random() * 70 + 15}vw`; // Рандомное положение по горизонтали
+            cloud.style.top = `${Math.random() * 60 + 20}vh`; // Рандомное положение по вертикали
+            cloud.style.opacity = "1";
+            setTimeout(() => {
+                cloud.style.opacity = "0";
+            }, 3000); // Исчезает через 3 секунды
+        }
+
+        // Запуск облачка каждые 5 секунд
+        setInterval(showLoveCloud, 5000);
     </script>
 </body>
 
